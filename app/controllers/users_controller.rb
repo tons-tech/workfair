@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user, only: [:profile]
+
   def sign_up
     user = User.find_by(email: params[:email])
 
@@ -30,10 +32,9 @@ class UsersController < ApplicationController
     end
   end
 
-  def login_form
-  end
-
-  def login
+  def profile
+    puts 'yeahhh'
+    render :json => {"msg": "success"}
   end
 
   def test
